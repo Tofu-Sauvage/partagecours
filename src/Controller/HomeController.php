@@ -6,8 +6,6 @@ use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-
 
 class HomeController extends AbstractController
 {
@@ -22,17 +20,18 @@ class HomeController extends AbstractController
      /**
      * @Route("/articles", name="articles")
      */
-    public function articlesAction(ArticleRepository $articleRepository, Request $request): Response
+    public function articlesAction(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
         return $this->render('home/articles.html.twig', ['articles'=>$articles]);
     }
     
     /**
-    * @Route("/articles/1", name="article")
+    * @Route("/articles/{id}", name="article")
     */
-    public function articleAction(): Response
+    public function articleAction(ArticleRepository $articleRepository, $id): Response
     {
-        return $this->render('home/article.html.twig');
+        $article = $articleRepository->findOneBy(['id'=>$id]);
+        return $this->render('home/article.html.twig', ['article'=>$article]);
     }
 }

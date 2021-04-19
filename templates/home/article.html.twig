@@ -1,27 +1,20 @@
 {% extends './base.html.twig'%}{% block title %} | accueil{% endblock %} {%
 block body %}
 <div class="container mt-5">
-  <h1>Article | détail</h1>
+  <h1>{{ article.title }}</h1>
+  <p class="lead">
+    {{ article.createdAt | date("d/m/Y")}}
+  </p>
   <div class="row mt-5">
     <div class="col-md-6 col-sm-12">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius aliquam amet
-      asperiores similique perspiciatis hic molestiae quisquam natus quas est
-      dolore illo, quis velit explicabo ea tempore quia quibusdam aperiam esse
-      exercitationem. Vero quam distinctio voluptate. Ipsam illum qui,
-      voluptatem sint sapiente pariatur, cum fuga expedita et doloribus earum
-      necessitatibus! Earum quisquam dolore nihil laboriosam quae maiores
-      adipisci recusandae soluta quos? Distinctio, non repellat voluptate ea
-      quisquam earum? Ex iure nostrum provident corrupti, odio ducimus? Quis
-      eius, molestiae aspernatur neque quibusdam hic optio quae error voluptatem
-      mollitia vel odit fuga exercitationem recusandae, laborum maxime atque
-      cum, consequatur fugit esse!
+      {{ article.content | raw }}
     </div>
     <div class="col-md-6 col-sm-12">
-        <img
+      <img
         src="{{ asset('uploads/dog1.jpg') }}"
         class="shadow-lg p-3 mb-5 bg-body rounded"
         alt="..."
-        style="width: 100%;"
+        style="width: 100%"
       />
     </div>
   </div>

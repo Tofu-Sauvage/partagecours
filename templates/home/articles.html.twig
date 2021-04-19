@@ -6,7 +6,7 @@ block body %}
     {% for article in articles %}
 
     <div class="col-md-6 col-sm-12">
-      <div class="card mb-5" style="width: 80%">
+      <div class="card mb-5 shadow-sm p-3 bg-body rounded" style="width: 80%">
         <img
           src="{{ asset('uploads/dog1.jpg') }}"
           class="card-img-top"
@@ -15,9 +15,18 @@ block body %}
         <div class="card-body">
           <h2>{{ article.title }}</h2>
           <p class="card-text">
-            {{ article.content | raw }}
+            {{ article.content | striptags | slice(0, 100)}}...
           </p>
-          <a href="{{ path('article') }}" class="card-link">Lire la suite</a>
+          <p class="card-text">
+            <a
+              href="{{ path('article', { id: article.id }) }}"
+              class="card-link"
+              >Lire la suite</a
+            >
+          </p>
+          <p class="card-text">
+            {{ article.createdAt | date("d/m/Y")}}
+          </p>
         </div>
       </div>
     </div>
