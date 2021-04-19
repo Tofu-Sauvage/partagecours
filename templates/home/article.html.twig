@@ -3,15 +3,21 @@ block body %}
 <div class="container mt-5">
   <h1>{{ article.title }}</h1>
   <p class="lead">
-    {{ article.createdAt | date("d/m/Y")}}
+    {{ article.createdAt | date("d/m/Y")}} à
+    {{ article.createdAt | date("H:i:s")}}
   </p>
   <div class="row mt-5">
     <div class="col-md-6 col-sm-12">
       {{ article.content | raw }}
+      <br />
+      <p class="text-end"><i class="fas fa-bone"></i></p>
+      <p class="text-end">
+        <a href="{{ path('form_edit', { id: article.id }) }}">éditer</a>
+      </p>
     </div>
     <div class="col-md-6 col-sm-12">
       <img
-        src="{{ asset('uploads/dog1.jpg') }}"
+        src="{{ asset('uploads/images/' ~ article.image) }}"
         class="shadow-lg p-3 mb-5 bg-body rounded"
         alt="..."
         style="width: 100%"

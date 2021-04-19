@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container">
-    <a class="navbar-brand" href="{{ path('home') }}">Blog !</a>
+    <a class="navbar-brand" href="{{ path('home') }}"><i class="fas fa-dog"></i> Blog !</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -18,7 +18,7 @@
           <a class="nav-link {{'#' in  app.request.uri ? 'active':'' }}" href="{{path('articles') }}">Articles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{'#' in  app.request.uri ? 'active':'' }}" href="#">Ajouter un article</a>
+          <a class="nav-link {{'#' in  app.request.uri ? 'active':'' }}" href="{{path('form_article') }}">Ajouter un article</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{'#' in  app.request.uri ? 'active':'' }}" href="#">Admin</a>

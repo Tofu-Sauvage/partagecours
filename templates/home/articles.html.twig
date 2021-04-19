@@ -8,7 +8,7 @@ block body %}
     <div class="col-md-6 col-sm-12">
       <div class="card mb-5 shadow-sm p-3 bg-body rounded" style="width: 80%">
         <img
-          src="{{ asset('uploads/dog1.jpg') }}"
+          src="{{ asset('uploads/images/' ~ article.image) }}"
           class="card-img-top"
           alt="..."
         />
@@ -24,9 +24,10 @@ block body %}
               >Lire la suite</a
             >
           </p>
-          <p class="card-text">
-            {{ article.createdAt | date("d/m/Y")}}
-          </p>
+          <small class="text-muted">
+            {{ article.createdAt | date("d/m/Y")}} à
+            {{ article.createdAt | date("H:i:s")}}
+          </small>
         </div>
       </div>
     </div>
