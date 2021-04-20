@@ -33,6 +33,15 @@ class HomeController extends AbstractController
         $articles = $articleRepository->findAll();
         return $this->render('home/articles.html.twig', ['articles'=>$articles]);
     }
+
+    
+     /**
+    * @Route("/dashboard", name="dashboard")
+    */
+    public function dashboardAction(ArticleRepository $articleRepository): Response{
+        $articles = $articleRepository->findAll();
+        return $this->render('admin/dash.html.twig', ['articles'=>$articles]);
+    }
     
     /**
     * @Route("/articles/{id}", name="article")
@@ -93,4 +102,5 @@ class HomeController extends AbstractController
         }
         return $this->render('home/form.html.twig', ['articleForm' => $form->createView()]);
     }
+
 }

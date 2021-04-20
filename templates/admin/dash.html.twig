@@ -1,0 +1,45 @@
+{% extends './base.html.twig'%}{% block title %} | accueil{% endblock %} {%
+block body %}
+<div class="container mt-5">
+  <h1>Admin</h1>
+  <a href="{{ path('form_article') }}"
+    ><button class="custom-button btn">Ajouter un article</button></a
+  >
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Image</th>
+          <th scope="col">Extrait</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if articles is not empty %} {% for article in articles %}
+        <tr>
+          <th scope="row"><a href="{{ path('article', { id: article.id }) }}"
+            >{{ article.id }}</a></th>
+          <td>{{ article.title }}</td>
+          <td style="width: 30%">
+            <img
+              src="{{ asset('uploads/images/' ~ article.image) }}"
+              class="rounded"
+              alt="..."
+              style="width: 100%"
+            />
+          </td>
+          <td> {{ article.content | striptags | slice(0, 50)}}...</td>
+          <td>
+            <a href="{{ path('form_edit', { id: article.id }) }}"
+              ><button class="custom-button btn">éditer</button></a
+            >
+          </td>
+        </tr>
+        {% endfor %} {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock body %}
